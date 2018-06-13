@@ -1,60 +1,45 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+
+    <nav class="nav" role="navigation" aria-label="Jump to a section">
+      <a v-for="(leaders, section) in leadersGroupedBySection" :href="`#${section.replace(/\W/g, '')}`" class="nav-link" :aria-label="section">
+        {{ section }}
+      </a>
+    </nav>
+
+    <div v-for="(leaders, section) in leadersGroupedBySection" class="py-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 :id="section.replace(/\W/g, '')">
+          {{ section }}
+        </h3>
+        <a href="#" title="Back to Top">
+          <span class="fa fa-chevron-up" aria-label="Back to Top"></span>
+        </a>
+      </div>
+      <div v-for="leader in leaders" is="LeaderCard" :leader="leader"></div>
+    </div>
+
   </div>
 </template>
 
 <script>
+import GoogleSheetModel from 'google-sheet-model'
+import LeaderCard from './components/LeaderCard'
+import _ from 'lodash'
+
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  extends: GoogleSheetModel,
+  propsData: {
+    sheetId: '1X8epq3VYWS7YMvx8fdgTYzzqJ-fxyuK30qlm76Fuad0',
+    tableId: 1,
+    fields: ['section', 'name', 'title', 'department', 'phone', 'email', 'assistant', 'assistantemail', 'imgsrc']
+  },
+  components: { LeaderCard },
+  computed: {
+    leadersGroupedBySection () {
+      return _.groupBy(this.instances, 'section')
     }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
