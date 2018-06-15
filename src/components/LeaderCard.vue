@@ -1,7 +1,7 @@
 <template lang="html">
-  <div v-if="leader.name" class="card card-body rounded-0">
+  <div v-if="leader.name" class="card card-body rounded-0 mb-2">
     <div class="media">
-      <img :src="imgSrc" :alt="leader.name" class="mr-3 leader-image" />
+      <img :src="imgSrc" :alt="leader.name" class="mr-3 county-leader-image" />
 
       <div class="media-body">
         <h4 class="mt-0 d-flex flex-column">
@@ -20,8 +20,8 @@
             Email
           </a>
 
-          <a v-if="leader.assistantemail" :href="`mailto:${leader.assistantemail}`" class="list-group-item list-group-item-action p-2 d-flex align-items-center" :aria-label="`Email ${leader.assistant}, admin assistant of ${leader.name}`">
-            <span class="mr-3 fa fa-fw fa-1x fa-user" aria-hidden="true"></span>
+          <a v-if="leader.assistantemail" :href="`mailto:${leader.assistantemail}`" class="list-group-item list-group-item-action p-2 d-flex align-items-center">
+            <span class="mr-3 fa fa-fw fa-1x fa-user" aria-label="Email"></span>
             <span class="small d-flex flex-column">
               <strong class="text-muted">Admin Assistant:</strong>
               {{ leader.assistant }}
@@ -46,15 +46,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.leader-image {
-  max-width: 80px;
-}
-
-@media (min-width: 576px) {
-  .leader-image {
-    max-width: 120px;
-  }
-}
-</style>

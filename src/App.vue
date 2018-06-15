@@ -2,7 +2,7 @@
   <div id="app">
 
     <nav class="nav" role="navigation" aria-label="Jump to a section">
-      <a v-for="(leaders, section) in leadersGroupedBySection" :href="`#${section.replace(/\W/g, '')}`" class="nav-link" :aria-label="section">
+      <a v-for="(leaders, section) in leadersGroupedBySection" :href="`#${section.replace(/\W/g, '')}`" class="nav-link pr-3" :aria-label="section">
         {{ section }}
       </a>
     </nav>
@@ -43,3 +43,5 @@ export default {
   }
 }
 </script>
+
+<style src="./assets/main.scss" lang="scss"></style>
