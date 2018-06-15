@@ -1,7 +1,7 @@
 <template lang="html">
   <div v-if="leader.name" class="card card-body rounded-0 mb-2">
     <div class="media">
-      <img :src="imgSrc" :alt="leader.name" class="mr-3 county-leader-image" />
+      <img :src="imgSrc" :alt="imgAlt" class="mr-3 county-leader-image" />
 
       <div class="media-body">
         <h4 class="mt-0 d-flex flex-column">
@@ -42,6 +42,9 @@ export default {
     },
     imgSrc () {
       return (this.leader.imgsrc) ? this.leader.imgsrc : 'https://www.hillsboroughcounty.org/library/hillsborough/head-shots/placeholder.gif'
+    },
+    imgAlt () {
+      return (this.leader.imgsrc) ? this.leader.name : `${this.leader.name} - Not Pictured`
     }
   }
 }

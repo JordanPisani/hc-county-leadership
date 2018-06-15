@@ -7,9 +7,9 @@
       </a>
     </nav>
 
-    <div v-for="(leaders, section) in leadersGroupedBySection" class="py-3">
-      <div class="d-flex justify-content-between align-items-center">
-        <h3 :id="section.replace(/\W/g, '')">
+    <div v-for="(leaders, section) in leadersGroupedBySection" class="py-4">
+      <div class="d-flex justify-content-between align-items-center my-2">
+        <h3 :id="section.replace(/\W/g, '')" class="my-0">
           {{ section }}
         </h3>
         <a href="#" title="Back to Top">
