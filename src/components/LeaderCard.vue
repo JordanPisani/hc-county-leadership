@@ -1,7 +1,9 @@
 <template lang="html">
   <div v-if="leader.name" class="card card-body rounded-0 mb-2">
     <div class="media">
-      <img :src="imgSrc" :alt="imgAlt" class="mr-3 county-leader-image" />
+      <a :href="imgFullSrc" target="_blank">
+        <img :src="imgThumbSrc" :alt="imgAlt" class="mr-3 county-leader-image" />
+      </a>
 
       <div class="media-body">
         <h4 class="mt-0 d-flex flex-column">
@@ -34,17 +36,22 @@
 </template>
 
 <script>
+let placeholderSrc = 'https://www.hillsboroughcounty.org/library/hillsborough/head-shots/placeholder.gif'
+
 export default {
   props: ['leader'],
   computed: {
     joinedTitle () {
       return (this.leader.department) ? [this.leader.title, this.leader.department].join(': ') : this.leader.title
     },
-    imgSrc () {
-      return (this.leader.imgsrc) ? this.leader.imgsrc : 'https://www.hillsboroughcounty.org/library/hillsborough/head-shots/placeholder.gif'
+    imgThumbSrc () {
+      return (this.leader.imgname) ? `https://www.hillsboroughcounty.org/library/hillsborough/head-shots/${this.leader.imgname}` : placeholderSrc
+    },
+    imgFullSrc () {
+      return (this.leader.imgname) ? `https://www.hillsboroughcounty.org/library/hillsborough/head-shots/full/${this.leader.imgname}` : placeholderSrc
     },
     imgAlt () {
-      return (this.leader.imgsrc) ? this.leader.name : `${this.leader.name} - Not Pictured`
+      return (this.leader.imgname) ? this.leader.name : `${this.leader.name} - Not Pictured`
     }
   }
 }
