@@ -3882,14 +3882,14 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=639880bb&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=31a29a93&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('GoogleSheetModel',{attrs:{"sheet-id":"1X8epq3VYWS7YMvx8fdgTYzzqJ-fxyuK30qlm76Fuad0","table-index":_vm.tableIndex,"fields":_vm.fields},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var gsheet = ref.gsheet;
 return [_c('nav',{staticClass:"nav",attrs:{"role":"navigation","aria-label":"Jump to a section"}},_vm._l((_vm.leadersGroupedBySection(gsheet.instances)),function(leaders,section,i){return _c('a',{key:i,staticClass:"nav-link pr-3",attrs:{"href":("#" + (_vm.sectionAnchor(section))),"aria-label":section}},[_vm._v("\n      "+_vm._s(section)+"\n    ")])}),0),_vm._l((_vm.leadersGroupedBySection(gsheet.instances)),function(leaders,section,i){return _c('div',{key:i,staticClass:"py-4"},[_c('div',{staticClass:"d-flex justify-content-between align-items-center my-2"},[_c('h3',{staticClass:"my-0",attrs:{"id":_vm.sectionAnchor(section)}},[_vm._v("\n        "+_vm._s(section)+"\n      ")]),_c('a',{attrs:{"href":"#","title":"Back to Top"}},[_c('span',{staticClass:"fa fa-arrow-up",attrs:{"aria-label":"Back to Top"}})])]),_vm._l((leaders),function(leader,i){return _c('LeaderCard',{key:i,attrs:{"leader":leader}})})],2)})]}}])})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=639880bb&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=31a29a93&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
 var es6_regexp_replace = __webpack_require__("a481");
@@ -4121,6 +4121,13 @@ var lodash_groupby_default = /*#__PURE__*/__webpack_require__.n(lodash_groupby);
 
 /* harmony default export */ var Appvue_type_script_lang_js_ = ({
   name: 'HcCountyLeadership',
+  install: function install(Vue) {
+    Vue.mixin({
+      components: {
+        HcCountyLeadership: this
+      }
+    });
+  },
   components: {
     GoogleSheetModel: GoogleSheetModel_umd_min_default.a,
     LeaderCard: LeaderCard

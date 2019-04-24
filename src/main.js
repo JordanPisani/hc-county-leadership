@@ -3,10 +3,6 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-Vue.mixin({
-  components: {
-    HcCountyLeadership: App
-  }
-})
+Vue.use(App)
 
 new Vue().$mount('#app')

@@ -30,6 +30,11 @@ import _groupBy from 'lodash.groupby'
 
 export default {
   name: 'HcCountyLeadership',
+  install (Vue) {
+    Vue.mixin({
+      components: { HcCountyLeadership: this }
+    })
+  },
   components: { GoogleSheetModel, LeaderCard },
   methods: {
     leadersGroupedBySection (models) {
