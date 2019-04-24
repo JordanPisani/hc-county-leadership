@@ -3882,14 +3882,14 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=32be1848&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('GoogleSheetModel',{attrs:{"sheet-id":"1X8epq3VYWS7YMvx8fdgTYzzqJ-fxyuK30qlm76Fuad0","table-index":"1","fields":_vm.fields},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=639880bb&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('GoogleSheetModel',{attrs:{"sheet-id":"1X8epq3VYWS7YMvx8fdgTYzzqJ-fxyuK30qlm76Fuad0","table-index":_vm.tableIndex,"fields":_vm.fields},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var gsheet = ref.gsheet;
 return [_c('nav',{staticClass:"nav",attrs:{"role":"navigation","aria-label":"Jump to a section"}},_vm._l((_vm.leadersGroupedBySection(gsheet.instances)),function(leaders,section,i){return _c('a',{key:i,staticClass:"nav-link pr-3",attrs:{"href":("#" + (_vm.sectionAnchor(section))),"aria-label":section}},[_vm._v("\n      "+_vm._s(section)+"\n    ")])}),0),_vm._l((_vm.leadersGroupedBySection(gsheet.instances)),function(leaders,section,i){return _c('div',{key:i,staticClass:"py-4"},[_c('div',{staticClass:"d-flex justify-content-between align-items-center my-2"},[_c('h3',{staticClass:"my-0",attrs:{"id":_vm.sectionAnchor(section)}},[_vm._v("\n        "+_vm._s(section)+"\n      ")]),_c('a',{attrs:{"href":"#","title":"Back to Top"}},[_c('span',{staticClass:"fa fa-arrow-up",attrs:{"aria-label":"Back to Top"}})])]),_vm._l((leaders),function(leader,i){return _c('LeaderCard',{key:i,attrs:{"leader":leader}})})],2)})]}}])})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=32be1848&
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=639880bb&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
 var es6_regexp_replace = __webpack_require__("a481");
@@ -3898,12 +3898,12 @@ var es6_regexp_replace = __webpack_require__("a481");
 var GoogleSheetModel_umd_min = __webpack_require__("c156");
 var GoogleSheetModel_umd_min_default = /*#__PURE__*/__webpack_require__.n(GoogleSheetModel_umd_min);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/LeaderCard.vue?vue&type=template&id=af21aed8&lang=html&
-var LeaderCardvue_type_template_id_af21aed8_lang_html_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.leader.name)?_c('div',{staticClass:"card card-body rounded-0 mb-2"},[_c('div',{staticClass:"media"},[_c('a',{attrs:{"href":_vm.imgFullSrc,"target":"_blank"}},[_c('img',{staticClass:"mr-3 county-leader-image",attrs:{"src":_vm.imgThumbSrc,"alt":_vm.imgAlt}})]),_c('div',{staticClass:"media-body"},[_c('h4',{staticClass:"mt-0 d-flex flex-column"},[_vm._v("\n        "+_vm._s(_vm.leader.name)+"\n        "),_c('small',{staticClass:"text-muted"},[_vm._v(_vm._s(_vm.joinedTitle))])]),_c('div',{staticClass:"list-group list-group-flush"},[(_vm.leader.phone)?_c('a',{staticClass:"list-group-item list-group-item-action p-2 d-flex align-items-center",attrs:{"href":("tel:" + (_vm.leader.phone))}},[_c('span',{staticClass:"mr-3 fa fa-fw fa-1x fa-phone",attrs:{"aria-hidden":"true"}}),_vm._v("\n          "+_vm._s(_vm.leader.phone)+"\n        ")]):_vm._e(),(_vm.leader.email)?_c('a',{staticClass:"list-group-item list-group-item-action p-2 d-flex align-items-center",attrs:{"href":("mailto:" + (_vm.leader.email)),"title":_vm.leader.email}},[_c('span',{staticClass:"mr-3 fa fa-fw fa-1x fa-envelope",attrs:{"aria-hidden":"true"}}),_vm._v("\n          Email\n        ")]):_vm._e(),(_vm.leader.assistantemail)?_c('a',{staticClass:"list-group-item list-group-item-action p-2 d-flex align-items-center",attrs:{"href":("mailto:" + (_vm.leader.assistantemail))}},[_c('span',{staticClass:"mr-3 fa fa-fw fa-1x fa-user",attrs:{"aria-label":"Email"}}),_c('span',{staticClass:"small d-flex flex-column"},[_c('strong',{staticClass:"text-muted"},[_vm._v("Admin Assistant:")]),_vm._v("\n            "+_vm._s(_vm.leader.assistant)+"\n          ")])]):_vm._e()])])])]):_vm._e()}
-var LeaderCardvue_type_template_id_af21aed8_lang_html_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/LeaderCard.vue?vue&type=template&id=cb609674&lang=html&
+var LeaderCardvue_type_template_id_cb609674_lang_html_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.leader.name)?_c('div',{staticClass:"card card-body rounded-0 mb-2"},[_c('div',{staticClass:"media"},[_c('a',{attrs:{"href":_vm.imgFullSrc,"target":"_blank"}},[_c('img',{staticClass:"mr-3 county-leader-image",attrs:{"src":_vm.imgThumbSrc,"alt":_vm.imgAlt}})]),_c('div',{staticClass:"media-body"},[_c('h4',{staticClass:"mt-0 d-flex flex-column"},[_vm._v("\n        "+_vm._s(_vm.leader.name)+"\n        "),_c('small',{staticClass:"text-muted"},[_vm._v(_vm._s(_vm.joinedTitle))])]),_c('div',{staticClass:"list-group list-group-flush"},[(_vm.leader.phone)?_c('a',{staticClass:"list-group-item list-group-item-action p-2 d-flex align-items-center",attrs:{"href":("tel:" + (_vm.leader.phone))}},[_c('span',{staticClass:"mr-3 fa fa-fw fa-1x fa-phone",attrs:{"aria-hidden":"true"}}),_vm._v("\n          "+_vm._s(_vm.leader.phone)+"\n        ")]):_vm._e(),(_vm.leader.email)?_c('a',{staticClass:"list-group-item list-group-item-action p-2 d-flex align-items-center",attrs:{"href":("mailto:" + (_vm.leader.email)),"title":_vm.leader.email}},[_c('span',{staticClass:"mr-3 fa fa-fw fa-1x fa-envelope",attrs:{"aria-hidden":"true"}}),_vm._v("\n          Email\n        ")]):_vm._e(),(_vm.leader.assistantemail)?_c('a',{staticClass:"list-group-item list-group-item-action p-2 d-flex align-items-center",attrs:{"href":("mailto:" + (_vm.leader.assistantemail))}},[_c('span',{staticClass:"mr-3 fa fa-fw fa-1x fa-user",attrs:{"aria-label":"Email"}}),_c('span',{staticClass:"small d-flex flex-column"},[_c('strong',{staticClass:"text-muted"},[_vm._v("Admin Assistant:")]),_vm._v("\n            "+_vm._s(_vm.leader.assistant)+"\n          ")])]):_vm._e()])])])]):_vm._e()}
+var LeaderCardvue_type_template_id_cb609674_lang_html_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/LeaderCard.vue?vue&type=template&id=af21aed8&lang=html&
+// CONCATENATED MODULE: ./src/components/LeaderCard.vue?vue&type=template&id=cb609674&lang=html&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
@@ -3957,8 +3957,11 @@ var placeholderSrc = 'https://www.hillsboroughcounty.org/library/hillsborough/he
     imgThumbSrc: function imgThumbSrc() {
       return this.leader.imgname ? "https://www.hillsboroughcounty.org/library/hillsborough/head-shots/".concat(this.leader.imgname) : placeholderSrc;
     },
+    hasFullImg: function hasFullImg() {
+      return this.leader.hasfullimg == 'TRUE';
+    },
     imgFullSrc: function imgFullSrc() {
-      return this.leader.imgname ? "https://www.hillsboroughcounty.org/library/hillsborough/head-shots/full/".concat(this.leader.imgname) : placeholderSrc;
+      return this.hasFullImg ? "https://www.hillsboroughcounty.org/library/hillsborough/head-shots/full/".concat(this.leader.imgname) : placeholderSrc;
     },
     imgAlt: function imgAlt() {
       return this.leader.imgname ? this.leader.name : "".concat(this.leader.name, " - Not Pictured");
@@ -4072,8 +4075,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_LeaderCardvue_type_script_lang_js_,
-  LeaderCardvue_type_template_id_af21aed8_lang_html_render,
-  LeaderCardvue_type_template_id_af21aed8_lang_html_staticRenderFns,
+  LeaderCardvue_type_template_id_cb609674_lang_html_render,
+  LeaderCardvue_type_template_id_cb609674_lang_html_staticRenderFns,
   false,
   null,
   null,
@@ -4088,7 +4091,6 @@ var lodash_groupby_default = /*#__PURE__*/__webpack_require__.n(lodash_groupby);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=script&lang=js&
 
-//
 //
 //
 //
@@ -4132,8 +4134,11 @@ var lodash_groupby_default = /*#__PURE__*/__webpack_require__.n(lodash_groupby);
     }
   },
   computed: {
+    tableIndex: function tableIndex() {
+      return "1";
+    },
     fields: function fields() {
-      return ['section', 'name', 'title', 'department', 'phone', 'email', 'assistant', 'assistantemail', 'imgname'];
+      return ['section', 'name', 'title', 'department', 'phone', 'email', 'assistant', 'assistantemail', 'imgname', 'hasfullimg'];
     }
   }
 });

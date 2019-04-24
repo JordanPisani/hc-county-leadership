@@ -1,5 +1,5 @@
 <template>
-  <GoogleSheetModel v-slot="{ gsheet }" sheet-id="1X8epq3VYWS7YMvx8fdgTYzzqJ-fxyuK30qlm76Fuad0" table-index="1" :fields="fields">
+  <GoogleSheetModel v-slot="{ gsheet }" sheet-id="1X8epq3VYWS7YMvx8fdgTYzzqJ-fxyuK30qlm76Fuad0" :table-index="tableIndex" :fields="fields">
 
     <nav class="nav" role="navigation" aria-label="Jump to a section">
       <a v-for="(leaders, section, i) in leadersGroupedBySection(gsheet.instances)" :key="i" :href="`#${sectionAnchor(section)}`" class="nav-link pr-3" :aria-label="section">
@@ -40,8 +40,11 @@ export default {
     }
   },
   computed: {
+    tableIndex () {
+      return process.env.VUE_APP_GSHEET_TABLE_INDEX
+    },
     fields () {
-      return ['section', 'name', 'title', 'department', 'phone', 'email', 'assistant', 'assistantemail', 'imgname']
+      return ['section', 'name', 'title', 'department', 'phone', 'email', 'assistant', 'assistantemail', 'imgname', 'hasfullimg']
     }
   }
 }

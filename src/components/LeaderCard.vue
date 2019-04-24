@@ -47,8 +47,11 @@ export default {
     imgThumbSrc () {
       return (this.leader.imgname) ? `https://www.hillsboroughcounty.org/library/hillsborough/head-shots/${this.leader.imgname}` : placeholderSrc
     },
+    hasFullImg () {
+      return (this.leader.hasfullimg == 'TRUE')
+    },
     imgFullSrc () {
-      return (this.leader.imgname) ? `https://www.hillsboroughcounty.org/library/hillsborough/head-shots/full/${this.leader.imgname}` : placeholderSrc
+      return (this.hasFullImg) ? `https://www.hillsboroughcounty.org/library/hillsborough/head-shots/full/${this.leader.imgname}` : placeholderSrc
     },
     imgAlt () {
       return (this.leader.imgname) ? this.leader.name : `${this.leader.name} - Not Pictured`
