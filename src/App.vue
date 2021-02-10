@@ -1,13 +1,24 @@
 <template>
-  <GoogleSheetModel v-slot="{ gsheet }" sheet-id="1X8epq3VYWS7YMvx8fdgTYzzqJ-fxyuK30qlm76Fuad0" :table-index="tableIndex" :fields="fields">
-
+  <div>
+    <!-- sections -->
     <nav class="nav" role="navigation" aria-label="Jump to a section">
-      <a v-for="(leaders, section, i) in leadersGroupedBySection(gsheet.instances)" :key="i" :href="`#${sectionAnchor(section)}`" class="nav-link pr-3" :aria-label="section">
+      <a
+        v-for="(_, section, i) in leadersGroupedBySection"
+        :key="i"
+        :href="`#${sectionAnchor(section)}`"
+        class="nav-link pr-3"
+        :aria-label="section"
+      >
         {{ section }}
       </a>
     </nav>
 
-    <div v-for="(leaders, section, i) in leadersGroupedBySection(gsheet.instances)" :key="i" class="py-4">
+    <!-- leaders -->
+    <div
+      v-for="(leaders, section, i) in leadersGroupedBySection"
+      :key="i"
+      class="py-4"
+    >
       <div class="d-flex justify-content-between align-items-center my-2">
         <h3 :id="sectionAnchor(section)" class="my-0">
           {{ section }}
@@ -17,41 +28,81 @@
         </a>
       </div>
 
-      <LeaderCard v-for="(leader, i) in leaders" :key="i" :leader="leader"></LeaderCard>
+      <LeaderCard
+        v-for="{ id, fields: leader } in leaders"
+        :key="id"
+        :leader="leader"
+      />
     </div>
-
-  </GoogleSheetModel>
+  </div>
 </template>
 
 <script>
-import GoogleSheetModel from '@hcflgov/vue-google-sheet-model'
+import airtable from './airtable'
+// import GoogleSheetModel from '@hcflgov/vue-google-sheet-model'
 import LeaderCard from './components/LeaderCard'
 import _groupBy from 'lodash.groupby'
 
 export default {
-  name: 'HcCountyLeadership',
-  install (Vue) {
+  install(Vue) {
+    Vue.prototype.$airtable = airtable
     Vue.mixin({
-      components: { HcCountyLeadership: this }
+      components: { HcCountyLeadership: this },
     })
   },
-  components: { GoogleSheetModel, LeaderCard },
-  methods: {
-    leadersGroupedBySection (models) {
-      return _groupBy(models, 'section')
-    },
-    sectionAnchor (section) {
-      return section.replace(/\W/g, '')
-    }
+
+  components: {
+    LeaderCard,
   },
-  computed: {
-    tableIndex () {
-      return process.env.VUE_APP_GSHEET_TABLE_INDEX
+
+  mounted() {
+    this.fetchLeaders()
+  },
+
+  data: () => ({
+    models: [],
+  }),
+
+  methods: {
+    async fetchLeaders() {
+      const { data } = await this.$airtable.get('/leaders', {
+        params: {
+          view: 'Grid view',
+        },
+      })
+
+      this.models = data.records
     },
-    fields () {
-      return ['section', 'name', 'title', 'department', 'phone', 'email', 'assistant', 'assistantemail', 'imgname', 'hasfullimg']
-    }
-  }
+
+    sectionAnchor(section) {
+      return section
+        .toLowerCase()
+        .replace(/[^a-z0-9 -]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+    },
+  },
+
+  computed: {
+    leadersGroupedBySection() {
+      return _groupBy(this.models, 'fields.section')
+    },
+
+    fields() {
+      return [
+        'section',
+        'name',
+        'title',
+        'department',
+        'phone',
+        'email',
+        'assistant',
+        'assistantemail',
+        'imgname',
+        'hasfullimg',
+      ]
+    },
+  },
 }
 </script>
 
