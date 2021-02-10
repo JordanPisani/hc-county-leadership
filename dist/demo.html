@@ -1,17 +1,13 @@
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <title>HcCountyLeadership demo</title>
 <script src="https://unpkg.com/vue"></script>
 <script src="./HcCountyLeadership.umd.js"></script>
 
-
 <div id="app">
-  <demo></demo>
+  <hc-county-leadership />
 </div>
 
 <script>
-new Vue({
-  components: {
-    demo: HcCountyLeadership
-  }
-}).$mount('#app')
+  Vue.use(HcCountyLeadership)
+  new Vue().$mount('#app')
 </script>
