@@ -15,9 +15,7 @@ const imgFullSrc = computed(
 );
 
 const joinedTitle = computed(() =>
-  props.leader.department
-    ? [props.leader.title, props.leader.department].join(": ")
-    : props.leader.title,
+  [props.leader.title, props.leader.department].filter(Boolean).join(": "),
 );
 
 const imgAlt = computed(() =>
@@ -29,25 +27,23 @@ const imgAlt = computed(() =>
 
 <template>
   <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-1">
-        <a :href="imgFullSrc"
-          ><img
-            :src="imgThumbSrc"
-            :alt="imgAlt"
-            class="img-fluid rounded-start"
-        /></a>
-      </div>
-
-      <div class="col-7 col-sm-8 col-md-9 col-lg-10 col-xl-11">
-        <div class="card-body">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="flex-shrink-0">
+          <a :href="imgFullSrc" target="_blank">
+            <img
+              :src="imgThumbSrc"
+              :alt="imgAlt"
+              class="img-fluid county-leader-img"
+            />
+          </a>
+        </div>
+        <div class="flex-grow-1 ms-3">
           <h5 class="card-title">{{ leader.name }}</h5>
 
-          <p class="card-text text-muted">
-            {{ joinedTitle }}
-          </p>
+          <p class="card-text text-muted">{{ joinedTitle }}</p>
 
-          <div class="list-group list-group-flush">
+          <div class="list-group list-group-flush small">
             <a
               v-if="leader.phone"
               class="list-group-item list-group-item-action"
@@ -58,7 +54,7 @@ const imgAlt = computed(() =>
                 width="16"
                 height="16"
                 fill="currentColor"
-                class="bi bi-telephone-fill"
+                class="bi bi-telephone-fill me-2"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -67,8 +63,6 @@ const imgAlt = computed(() =>
                 />
               </svg>
 
-              &nbsp;
-
               {{ leader.phone }}
             </a>
 
@@ -76,13 +70,14 @@ const imgAlt = computed(() =>
               v-if="leader.email"
               class="list-group-item list-group-item-action"
               :href="`mailto:${leader.email}`"
+              :title="leader.assistant_email"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
                 fill="currentColor"
-                class="bi bi-envelope-fill"
+                class="bi bi-envelope-fill me-2"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -90,13 +85,11 @@ const imgAlt = computed(() =>
                 />
               </svg>
 
-              &nbsp;
-
-              {{ leader.email }}</a
+              Email</a
             >
             <a
               v-if="leader.assistant"
-              class="list-group-item list-group-item-action"
+              class="list-group-item list-group-item-action d-flex align-items-center"
               :href="`mailto:${leader.assistant_email}`"
             >
               <svg
@@ -104,7 +97,7 @@ const imgAlt = computed(() =>
                 width="16"
                 height="16"
                 fill="currentColor"
-                class="bi bi-person-fill"
+                class="bi bi-person-fill me-2"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -112,9 +105,10 @@ const imgAlt = computed(() =>
                 />
               </svg>
 
-              &nbsp;
-
-              {{ leader.assistant }}</a
+              <span class="d-flex flex-column"
+                ><strong class="text-muted">Admin Assistant:</strong
+                >{{ leader.assistant }}</span
+              ></a
             >
           </div>
         </div>
@@ -122,3 +116,13 @@ const imgAlt = computed(() =>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.county-leader-img {
+  width: 80px;
+
+  @media (min-width: 576px) {
+    width: 120px;
+  }
+}
+</style>
