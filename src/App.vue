@@ -1,109 +1,68 @@
+<script setup lang="ts">
+import { leaders, leaderGroups, fetchLeaders } from "./lib/leaders";
+import Leader from "./components/Leader.vue";
+import _slugify from "slugify";
+const slugify = (str: any) =>
+  _slugify(str, {
+    replacement: "-",
+    lower: true,
+  });
+
+fetchLeaders();
+
+const containerClass = import.meta.env.DEV
+  ? "py-5 container"
+  : "container-fluid";
+</script>
+
 <template>
-  <div>
-    <!-- sections -->
+  <aside v-if="leaders.loading" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </aside>
+
+  <article v-else :class="containerClass">
     <nav class="nav" role="navigation" aria-label="Jump to a section">
       <a
-        v-for="(_, section, i) in leadersGroupedBySection"
+        v-for="(_, section, i) of leaderGroups"
         :key="i"
-        :href="`#${sectionAnchor(section)}`"
+        :href="`#${slugify(section)}`"
         class="nav-link pr-3"
-        :aria-label="section"
+        >{{ section }}</a
       >
-        {{ section }}
-      </a>
     </nav>
 
-    <!-- leaders -->
-    <div
-      v-for="(leaders, section, i) in leadersGroupedBySection"
-      :key="i"
-      class="py-4"
-    >
-      <div class="d-flex justify-content-between align-items-center my-2">
-        <h3 :id="sectionAnchor(section)" class="my-0">
+    <section v-for="(_leaders, section, i) in leaderGroups">
+      <!-- heading & anchor -->
+      <div class="d-flex justify-content-between align-items-center mb-2 mt-5">
+        <h3 :id="slugify(section)">
           {{ section }}
         </h3>
+
         <a href="#" title="Back to Top">
-          <span class="fa fa-arrow-up" aria-label="Back to Top"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-chevron-bar-up"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3.646 11.854a.5.5 0 0 0 .708 0L8 8.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM2.4 5.2c0 .22.18.4.4.4h10.4a.4.4 0 0 0 0-.8H2.8a.4.4 0 0 0-.4.4z"
+            />
+          </svg>
         </a>
       </div>
 
-      <LeaderCard
-        v-for="{ id, fields: leader } in leaders"
+      <!--  -->
+      <Leader
+        v-for="{ id, fields: leader } in _leaders"
         :key="id"
         :leader="leader"
       />
-    </div>
-  </div>
+    </section>
+  </article>
 </template>
-
-<script>
-import airtable from './airtable'
-// import GoogleSheetModel from '@hcflgov/vue-google-sheet-model'
-import LeaderCard from './components/LeaderCard'
-import _groupBy from 'lodash.groupby'
-
-export default {
-  install(Vue) {
-    Vue.prototype.$airtable = airtable
-    Vue.mixin({
-      components: { HcCountyLeadership: this },
-    })
-  },
-
-  components: {
-    LeaderCard,
-  },
-
-  mounted() {
-    this.fetchLeaders()
-  },
-
-  data: () => ({
-    models: [],
-  }),
-
-  methods: {
-    async fetchLeaders() {
-      const { data } = await this.$airtable.get('/leaders', {
-        params: {
-          view: 'Grid view',
-        },
-      })
-
-      this.models = data.records
-    },
-
-    sectionAnchor(section) {
-      return section
-        .toLowerCase()
-        .replace(/[^a-z0-9 -]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-    },
-  },
-
-  computed: {
-    leadersGroupedBySection() {
-      return _groupBy(this.models, 'fields.section')
-    },
-
-    fields() {
-      return [
-        'section',
-        'name',
-        'title',
-        'department',
-        'phone',
-        'email',
-        'assistant',
-        'assistantemail',
-        'imgname',
-        'hasfullimg',
-      ]
-    },
-  },
-}
-</script>
-
-<style src="./assets/main.scss" lang="scss"></style>
