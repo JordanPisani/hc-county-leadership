@@ -23,7 +23,7 @@ const containerClass = import.meta.env.DEV
   </aside>
 
   <article v-else :class="containerClass">
-    <nav class="nav" role="navigation" aria-label="Jump to a section">
+    <nav class="nav" id="top" role="navigation" aria-label="Jump to a section">
       <a
         v-for="(_, section, i) of leaderGroups"
         :key="i"
@@ -40,7 +40,7 @@ const containerClass = import.meta.env.DEV
           {{ section }}
         </h3>
 
-        <a href="#" title="Back to Top">
+        <a href="#top" title="Back to Top">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
