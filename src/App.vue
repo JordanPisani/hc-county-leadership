@@ -23,7 +23,12 @@ const containerClass = import.meta.env.DEV
   </aside>
 
   <article v-else :class="containerClass">
-    <nav class="nav" id="top" role="navigation" aria-label="Jump to a section">
+    <nav
+      class="nav pt-1"
+      id="top"
+      role="navigation"
+      aria-label="Jump to a section"
+    >
       <a
         v-for="(_, section, i) of leaderGroups"
         :key="i"
