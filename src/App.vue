@@ -12,7 +12,7 @@ fetchLeaders();
 
 const containerClass = import.meta.env.DEV
   ? "py-5 container"
-  : "container-fluid pb-2 pt-1";
+  : "container-fluid py-1";
 </script>
 
 <template>
