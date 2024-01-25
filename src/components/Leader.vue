@@ -26,7 +26,7 @@ const imgAlt = computed(() =>
 </script>
 
 <template>
-  <div class="card pb-2">
+  <div class="card mb-3">
     <div class="card-body">
       <div class="d-flex">
         <div class="flex-shrink-0">

@@ -12,7 +12,7 @@ fetchLeaders();
 
 const containerClass = import.meta.env.DEV
   ? "py-5 container"
-  : "container-fluid";
+  : "container-fluid pb-2 pt-1";
 </script>
 
 <template>
@@ -23,12 +23,7 @@ const containerClass = import.meta.env.DEV
   </aside>
 
   <article v-else :class="containerClass">
-    <nav
-      class="nav pt-1"
-      id="top"
-      role="navigation"
-      aria-label="Jump to a section"
-    >
+    <nav class="nav" id="top" role="navigation" aria-label="Jump to a section">
       <a
         v-for="(_, section, i) of leaderGroups"
         :key="i"
